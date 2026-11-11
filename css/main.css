@@ -1,0 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#abrir-carta {
+  display: none;
+}
+
+body {
+  min-height: 100vh;
+  background: #0b0e14 url('../img/primeiro fundo amongus.webp') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: background-image 0.5s ease-in-out;
+}
+
+body:has(#abrir-carta:checked) {
+  background-image: url('../img/segundo fundo amongus.webp');
+}
+
+.container-principal {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.circulo-vermelho {
+  width: 180px;
+  height: 180px;
+  background-color: #d63031;
+  border: 6px solid #8b0000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), inset 0 6px 0 rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 10;
+}
+
+.circulo-vermelho:hover {
+  transform: scale(1.05);
+  background-color: #ff3838;
+}
+
+.circulo-vermelho:active {
+  transform: scale(0.95);
+}
+
+.circulo-vermelho span {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+
+#abrir-carta:checked ~ .container-principal .circulo-vermelho {
+  display: none;
+}
+
+.papel-carta {
+  display: none;
+  background-color: #fcf8ee;
+  background-image: linear-gradient(#e5dad5 1px, transparent 1px);
+  background-size: 100% 32px;
+  width: 100%;
+  max-width: 520px;
+  padding: 40px 35px 40px 50px;
+  border-radius: 4px;
+  border: 1px solid #d4c5b9;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(0, 0, 0, 0.03);
+  animation: surgircarta 0.6s ease forwards;
+  position: relative;
+}
+
+.papel-carta::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #f19a9a;
+}
+
+#abrir-carta:checked ~ .container-principal .papel-carta {
+  display: block;
+}
+
+.conteudo-mensagem p {
+  color: #2c2c2c;
+  font-size: 1.1rem;
+  line-height: 32px;
+  margin-bottom: 32px;
+  text-align: left;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.conteudo-mensagem .ps-mensagem {
+  font-size: 1rem;
+  color: #4a4a4a;
+  font-style: normal;
+  margin-bottom: 0;
+  border-top: none;
+  padding-top: 0;
+}
+
+@keyframes surgircarta {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
